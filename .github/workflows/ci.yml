@@ -6,7 +6,12 @@ on:
 permissions:
   contents: read
 jobs:
-  smoke:
+  hosted:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - run: echo "public-hosted-ok"
+  selfhosted:
     runs-on:
       - self-hosted
       - linux
@@ -14,5 +19,5 @@ jobs:
       - nova-cf-ci
     timeout-minutes: 10
     steps:
-      - run: echo "phase0-smoke ok host=$(hostname) labels=nova-cf-ci"
+      - run: echo "phase0-selfhosted-ok host=$(hostname)"
       - run: uname -a
