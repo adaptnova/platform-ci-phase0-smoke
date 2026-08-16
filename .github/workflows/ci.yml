@@ -1,0 +1,18 @@
+name: Phase0 Smoke CI
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  smoke:
+    runs-on:
+      - self-hosted
+      - linux
+      - x64
+      - nova-cf-ci
+    timeout-minutes: 10
+    steps:
+      - run: echo "phase0-smoke ok host=$(hostname) labels=nova-cf-ci"
+      - run: uname -a
